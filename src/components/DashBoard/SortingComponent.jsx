@@ -2,17 +2,20 @@ import React, { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 
 const SortingComponent = () => {
-    const { products, setProducts, fetchProduct } = useContext(AppContext);
+    const { setPopularityRange} = useContext(AppContext);
 
-    // Handle filter by popularity range
+    // Handle popularity range filter
     const handlePopularityFilter = (event) => {
-        fetchProduct();
         const range = event.target.value;
-        const [min, max] = range.split('-').map(Number);
-        setProducts(products.filter(product => {
-            const popularity = Number(product.popularity);
-            return (min <= popularity && (isNaN(max) || popularity <= max));
-        }));
+        
+        if (range === "") {
+            // Reset to include all popularity values
+            setPopularityRange([0, Infinity]);
+        } else {
+            // Parse and set the range
+            const [min, max] = range.split('-').map(Number);
+            setPopularityRange([min || 0, max || Infinity]); // Default to [0, Infinity] if no value
+        }
     };
 
     return (
@@ -63,7 +66,7 @@ const SortingComponent = () => {
                     <input
                         type="radio"
                         name="popularity"
-                        value="50000+"
+                        value="50000"
                         onChange={handlePopularityFilter}
                         className="form-radio text-blue-600"
                     />

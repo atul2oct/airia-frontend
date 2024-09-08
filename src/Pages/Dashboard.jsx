@@ -4,9 +4,9 @@ import Sidebar from '../components/DashBoard/Sidebar'
 
 const Dashboard = () => {
   return (
-    <div className='relative flex min-h-[calc(100vh-3.5rem)] '>
+    <div className='xs:relative flex flex-col xs:flex-row xs:min-h-[calc(100vh-3.5rem)] '>
         <Sidebar/>
-        <div className='h-[calc(100vh-3.5rem)] flex-1 overflow-auto'>
+        <div className='xs:h-[calc(100vh-3.5rem)] xs:flex-1 overflow-auto'>
             <>
                 <ProductDashboard/>
             </>

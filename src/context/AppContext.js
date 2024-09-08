@@ -19,7 +19,9 @@ export default function AppContextProvider({children}){
 
     const currentPage = currentPageRef.current;
     const [products, setProducts] = useState([]);
-    
+    const [searchQuery, setSearchQuery] = useState(''); // State for search query
+    const [priceRange, setPriceRange] = useState([0, Infinity]); // [min, max]
+    const [popularityRange, setPopularityRange] = useState([0, 20000]);
     const [cart, setCart] = useState([]); // State for cart
   
     const fetchProduct = () => {
@@ -48,15 +50,38 @@ export default function AppContextProvider({children}){
     
 
     // Use useMemo to optimize filtering of products useMemo for Filtering: Memoize filteredProducts to avoid recalculating the filtered list unless products or searchQuery changes.
+    // const filteredProducts = useMemo(() => 
+    //     products.filter(product =>
+    //     product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    // ), [products, searchQuery]);
 
-    const totalPages = Math.ceil(products.length / itemsPerPage);
+    // Memoize the filteredProducts calculation based on searchQuery and priceRange
+    const filteredProducts = useMemo(() => {
+        return products.filter(product => {
+            // for search
+            const titleMatch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
 
+            const popularity = Number(product.popularity);
+            const price = Number(product.price);
+            const [priceMin, priceMax] = priceRange;
+            const [popMin, popMax] = popularityRange;
+
+            const priceMatch = (priceMin <= price && (isNaN(priceMax) || price <= priceMax));
+            const popularityMatch = (popMin <= popularity && (isNaN(popMax) || popularity <= popMax));
+            
+            return titleMatch && priceMatch && popularityMatch;
+        });
+    }, [products, searchQuery, priceRange, popularityRange]); // Dependencies for useMemo
+
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+    // Memoize the paginatedProducts calculation
     const paginatedProducts = useMemo(() => {
-        return products.slice(
+        return filteredProducts.slice(
             (currentPage - 1) * itemsPerPage,
             currentPage * itemsPerPage
         );
-    }, [products, currentPage, itemsPerPage]);
+    }, [filteredProducts, currentPage, itemsPerPage]);
 
     function handlePageChange(page){
         if (page >= 1 && page <= totalPages) {
@@ -100,9 +125,16 @@ export default function AppContextProvider({children}){
         setProducts,
         paginatedProducts,
         currentPage,
+        filteredProducts,
+        searchQuery,
+        setSearchQuery,
         cart,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        priceRange,
+        setPriceRange,
+        popularityRange,
+        setPopularityRange
     }
 
     // step 2

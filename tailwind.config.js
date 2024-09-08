@@ -130,6 +130,9 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        'xs': '500px', // Add custom breakpoint for screens >= 500px
+      },
       maxWidth: {
         maxContent: "1260px",
         maxContentTab: "650px"

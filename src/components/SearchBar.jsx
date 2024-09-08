@@ -1,9 +1,10 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { AppContext } from '../context/AppContext';
 
 const SearchBar = () => {
 
-    const { products, paginatedProducts, setProducts } = useContext(AppContext);
+
+    const { searchQuery,setSearchQuery } = useContext(AppContext);
 
     
     
@@ -23,16 +24,12 @@ const SearchBar = () => {
     }
 
     // Create a debounced version of the handleSearchChange function
-    // Handle search input change
     const handleSearchChange = (event) => {
-        const searchTerm = event.target.value.toLowerCase();
-        setProducts(products.filter(product =>
-            product.title.toLowerCase().includes(searchTerm)
-        ));
+        setSearchQuery(event.target.value);
     };
 
     // Create a debounced version of the handleSearchChange function
-    const optimisedVersion = useCallback(debounce(handleSearchChange),[products, setProducts])
+    const optimisedVersion = useCallback(debounce(handleSearchChange),[searchQuery])
 
     
 
@@ -44,7 +41,7 @@ const SearchBar = () => {
             placeholder="Search by title..."
             name='search'
             onChange={optimisedVersion}
-            style={{ marginBottom: '20px', padding: '10px', width: '100%' }}
+            className=" w-full border-[1px] border-richblack-900 rounded-md px-4 py-2 mx-4 text-richblack-900 transition duration-300 ease-in-out hover:scale-110"
         />
     </div>
   )

@@ -2,22 +2,20 @@ import React, { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 
 const FilterComponent = () => {
-    const { products, setProducts, fetchProduct ,paginatedProducts } = useContext(AppContext);
+    const { setPriceRange} = useContext(AppContext);
 
-    console.log("filter",products)
-    console.log("paginatedProducts",paginatedProducts)
-
-    // Handle filter by popularity range
+    // Handle price range filter
     const handlePriceFilter = (event) => {
-       
         const range = event.target.value;
         
-        const [min, max] = range.split('-').map(Number);
-        console.log("range",min, max)
-        setProducts(products.filter(product => {
-            const popularity = Number(product.popularity);
-            return (min <= popularity && (isNaN(max) || popularity <= max));
-        }));
+        if (range === "") {
+            // Reset to include all popularity values
+            setPriceRange([0, Infinity]);
+        } else {
+            // Parse and set the range
+            const [min, max] = range.split('-').map(Number);
+            setPriceRange([min || 0, max || Infinity]); // Default to [0, Infinity] if no value
+        }
     };
 
     return (
@@ -71,7 +69,7 @@ const FilterComponent = () => {
                         <input
                             type="radio"
                             name="price"
-                            value="20000+"
+                            value="20000"
                             onChange={handlePriceFilter}
                             className="form-radio text-blue-600"
                         />

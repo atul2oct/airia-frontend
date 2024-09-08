@@ -15,7 +15,7 @@ const Navbar = () => {
             
             {/* logo */}
             <Link to='/'>
-                <FaShoppingCart className='text-4xl'/>
+                <FaShoppingCart className='text-4xl hidden xs:block'/>
             </Link>
 
             <SearchBar/>
