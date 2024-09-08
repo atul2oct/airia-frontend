@@ -1,6 +1,40 @@
-# Getting Started with Create React App
+## Overview
+**Airia - FrontEnd Developer**
+Project Name is a web application built with the MERN stack (MongoDB, Express.js, React, Node.js). It provides a robust and interactive user interface for managing and searching products with advanced filtering capabilities.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+## Features
+
+- **Product Search:** Allows users to search for products by title.
+- **Filtering:** Includes filtering options by price range and popularity.
+- **Pagination:** Supports pagination to handle large datasets efficiently.
+- **Responsive Design:** Adapts to various screen sizes for an optimal user experience.
+
+## Airia - FrontEnd Developer Folder Structure
+
+project-name/               # Frontend (React) application
+│   ├── public/             # Public assets (e.g., index.html, favicon.ico)
+│   ├── images/             # image files
+│   ├── src/                # Source files
+│   │   ├── components/     # React components
+│   │   ├── pages/          # React pages (e.g., Dashboard)
+│   │   ├── context/        # context API or state management
+│   │   ├── App.js          # Main React component
+│   │   └── index.js        # Entry point
+│   ├── package.json        # dependencies and scripts
+│   └── README.md           # README
+
+
+## Installation
+
+To get started with the project, follow these steps:
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/yourusername/project-name.git
+   ```
 
 ## Available Scripts
 
@@ -28,38 +62,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
 ### Deployment
 
