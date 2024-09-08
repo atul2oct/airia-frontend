@@ -1,0 +1,1 @@
+export const baseUrl = "https://cdn.drcode.ai/interview-materials/products.json";
