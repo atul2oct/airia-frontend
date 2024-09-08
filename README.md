@@ -13,17 +13,19 @@ Project Name is a web application built with the MERN stack (MongoDB, Express.js
 
 ## Airia - FrontEnd Developer Folder Structure
 
-project-name/               # Frontend (React) application
-│   ├── public/             # Public assets (e.g., index.html, favicon.ico)
-│   ├── images/             # image files
-│   ├── src/                # Source files
-│   │   ├── components/     # React components
-│   │   ├── pages/          # React pages (e.g., Dashboard)
-│   │   ├── context/        # context API or state management
-│   │   ├── App.js          # Main React component
-│   │   └── index.js        # Entry point
-│   ├── package.json        # dependencies and scripts
-│   └── README.md           # README
+
+### Explanation
+
+- **`public/`**: Contains static files such as the main HTML file and favicon.
+- **`images/`**: Directory for image files used in the application.
+- **`src/`**: Contains the source code for the application.
+  - **`components/`**: Contains reusable React components.
+  - **`pages/`**: Contains React pages or views, such as the Dashboard.
+  - **`context/`**: Contains context API or state management setup.
+  - **`App.js`**: The root component that includes routing and global components.
+  - **`index.js`**: The entry point for the React application.
+- **`package.json`**: Manages dependencies and scripts for the project.
+- **`README.md`**: Provides project documentation, including setup instructions and usage.
 
 
 ## Installation
@@ -40,7 +42,7 @@ To get started with the project, follow these steps:
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
